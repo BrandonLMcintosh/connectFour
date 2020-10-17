@@ -16,11 +16,11 @@
 }
 
 /* TODO: make pieces red/blue,  depending on player 1/2 piece */
-.piece[data-player='1']{
+.piece.P1{
   background-color: red;
 }
 
-.piece[data-player='2']{
+.piece.P2{
   background-color: blue;
 }
 
