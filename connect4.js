@@ -103,16 +103,13 @@ const checkForWin = () => {
     //  - returns true if all are legal coordinates & all match currPlayer
 
     //for every element in the selected cell
-    cells.every(
-      ([y, x]) =>
-        //if all of the cells are on the board
-        y >= 0 &&
-        y < HEIGHT &&
-        x >= 0 &&
-        x < WIDTH &&
+    return cells.every(
+      ([y, x]) =>{
+        //If all of the elements are on the board
+        const isWin = ((y >= 0) && (y < HEIGHT) && (x >= 0) && (x < WIDTH) && (board[y][x] === currPlayer));
         //And all of the cells belong to the curent player
-        board[y][x] === currPlayer
-    );
+        return isWin;
+      });
   }
 
   // TODO: read and understand this code. Add comments to help you.
@@ -127,9 +124,7 @@ const checkForWin = () => {
     //calculate diagnonal win going down and to the left of each cell
     const diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
     //for each cell, check if any one of the possible win scenarios is true
-    const result = (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL));
-    console.log(result);
-    return result;
+    return ((_win(horiz)) || (_win(vert)) || (_win(diagDR)) || (_win(diagDL)));
   }));
 }
 const checkForTie = () => board.every(row => row.every(cell => cell !== null));
