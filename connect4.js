@@ -23,13 +23,15 @@ const handleClick = evt => {
 
   // check for win  
   if (checkForWin()){
-    endGame(`Player ${currPlayer} won!`);
+    //setting timeout so that when a tie happens, it will won't alert for 1ms to allow the css to render the animation for the piece.
+    setTimeout(() => endGame(`Player ${currPlayer} won!`), 1);
   }
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
   if(checkForTie()){
-    endGame(`The game is a tie with ${moves} moves!`);
+    //setting timeout so that when a tie happens, it will won't alert for 1ms to allow the css to render the animation for the piece.
+    setTimeout(() => endGame(`The game is a tie with ${moves} moves!`), 1);
   }
 
   // switch players
@@ -91,7 +93,7 @@ const placeInTable = (y, x) => {
   const cell = document.getElementById(`${y}-${x}`);
   const piece = document.createElement('div');
   piece.classList.add('piece');
-  piece.classList.add(`P${currPlayer}`);
+  piece.classList.add(`P${currPlayer}`, 'fall');
   cell.append(piece);
   board[y][x] = currPlayer;
   moves++;
